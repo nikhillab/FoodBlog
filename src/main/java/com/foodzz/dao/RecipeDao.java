@@ -22,7 +22,7 @@ public class RecipeDao {
 	@Autowired private UserRecipeRepo  userRecipeRepo;
 	private Recipe recipe = new Recipe();
 
-	public Recipe saveRecipe(final RecipeForm recipeForm, final String photosName ,final Long userId) {
+	public int saveRecipe(final RecipeForm recipeForm, final String photosName ,final Long userId) {
 
 		this.recipe.setRecipeName(recipeForm.getTitle());
 
@@ -48,7 +48,7 @@ public class RecipeDao {
 		// saving recipe and getting it's id
 		Recipe savedRecipe = recipeRepo.save(this.recipe);
 		
-		return savedRecipe;
+		return savedRecipe.getRecipeId();
 
 	}
 

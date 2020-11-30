@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.foodzz.dao.UserDao;
 import com.foodzz.entity.UserDescription;
 import com.foodzz.entity.UserRecipe;
 import com.foodzz.form.RecipeForm;
@@ -31,7 +30,7 @@ import com.foodzz.service.UserService;
 @SessionAttributes("userId")
 public class AuthencatedController {
 
-	private static String path = System.getProperty("user.dir") + "/uoloads";
+	private static String path = System.getProperty("user.dir") + "/src/main/webapp/uploads";
 
 	@Autowired
 	private DaoService daoService;
@@ -93,9 +92,9 @@ public class AuthencatedController {
 		}
 		daoService.saveRecipePhotos(photoNames.toString());
 
-		daoService.saveRecipe();
+		int saveRecipeId = daoService.saveRecipe();
 
-		return "redirect:/c";
+		return "redirect:/c/"+saveRecipeId;
 	}
 
 	@GetMapping("/user/{username}")
@@ -104,13 +103,17 @@ public class AuthencatedController {
 		Optional<UserDescription> userDetails = userService.getUserDetails(username);
 
 		if (userDetails.isPresent()) {
+			model.addAttribute("title", "Profile");
 
-			System.out.println(userDetails.get().getFirstName());
+
+			//System.out.println(userDetails.get().getFirstName());
 			model.addAttribute("userDetails", userDetails.get());
 			model.addAttribute("userId", userDetails.get().getUserId());
-			Optional<UserRecipe> usersRecipe = userService.getUsersRecipe(4l);
-			if (usersRecipe.isPresent())
+			Optional<UserRecipe> usersRecipe = userService.getUsersRecipe(userDetails.get().getUserId());
+			if (usersRecipe.isPresent()) {
 				model.addAttribute("usersRecipe", usersRecipe.get());
+			}
+			
 
 		} else
 			return "redirect:/login";

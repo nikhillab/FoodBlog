@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@include file="Head.jsp"%>
 <body>
@@ -10,27 +11,24 @@
 				</div>
 				<div id="carouselExampleControls" class="carousel slide"
 					data-ride="carousel">
+
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img
-								src="${pageContext.request.contextPath}/public/img/recipes/1.jpg"
-								class="d-block w-100 " alt="${recipe.getRecipeName()}"
+								src="${pageContext.request.contextPath}/uploads/${pictures[0]}"
+								class="d-block w-100 " alt="${pictures[0]}"
 								height="500" width="400">
 						</div>
+						<c:forTokens items="${recipe.getRecipePicture()}" delims="," var="image">
 						<div class="carousel-item ">
 							<img
-								src="${pageContext.request.contextPath}/public/img/recipes/3.jpg"
-								class="d-block w-100" alt="${recipe.getRecipeName()}"
+								src="${pageContext.request.contextPath}/uploads/${image}"
+								class="d-block w-100 " alt="${image}"
 								height="500" width="400">
 						</div>
-						<div class="carousel-item ">
-							<img
-								src="${pageContext.request.contextPath}/public/img/recipes/4.jpg"
-								class="d-block w-100" alt="${recipe.getRecipeName()}"
-								height="500" width="400">
-						</div>
-
+						</c:forTokens>
 					</div>
+
 					<a class="carousel-control-prev" href="#carouselExampleControls"
 						role="button" data-slide="prev"> <span
 						class="carousel-control-prev-icon" aria-hidden="true"></span> <span
@@ -42,6 +40,23 @@
 					</a>
 				</div>
 				<div class="row">
+					<div class="col-lg-12 col-md-6 ftw-warp mt-3">
+						<div class="section-title"></div>
+						<h5>
+							<b>Summary:</b> ${recipe.getRecipeDescription().getSummary()}
+						</h5>
+
+						<h5>
+							<b>Time:</b> ${recipe.getRecipeDescription().getTime()} Min
+						</h5>
+						<h5>
+							<b>Serves:</b>${recipe.getRecipeDescription().getServes()}</h5>
+					</div>
+
+				</div>
+
+				<div class="row">
+
 					<div class="col-lg-4 col-md-6 ftw-warp mt-3">
 						<div class="section-title">
 							<h3>Inigredients List</h3>
@@ -73,8 +88,9 @@
 							</div>
 							<div class="blog-text">
 								<h5>${recipe.getRecipeType() }</h5>
-								<span>By Maria Williams</span>
-								<p>${recipe.getRecipeDescription()}</p>
+								<span>By <security:authentication
+										property="principal.username" /></span>
+								<p>${recipe.getRecipeDescription().getProcess()}</p>
 
 								<a href="#" class="comment">2 Comments</a>
 							</div>

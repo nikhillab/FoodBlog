@@ -53,24 +53,6 @@ public class Recipe {
 		this.recipeInigredientsList.add(inigredient);
 	}
 
-	public static Recipe getRecipe() {
-		Recipe recipe = new Recipe();
-		recipe.setRecipeDescription(RecipeDescription.recipeDescription());
-		recipe.setRecipeInigredientsList(Arrays.asList("  2 tablespoons paprika  ",
-				"2 tablespoons freshly ground black pepper  ", "2 teaspoons garlic powder  ",
-				"2 teaspoons dried oregano  ", "1/2 teaspoon cayenne pepper  ", "1 cup buttermilk  ", "1 large egg  ",
-				"Kosher salt  ",
-				"One whole chicken, about 4 pounds, cut into 10 pieces or 3 1/2 pounds bone-in, skin-on breasts, legs, drumsticks, and/or wings  ",
-				"1 1⁄2 cups all-purpose flour  ", "1⁄2 cup cornstarch  ", "1 teaspoon baking powder  ",
-				"4 cups vegetable shortening or peanut oil "));
-		recipe.setRecipeName("The Food Lab's Southern Fried Chicken Recipe");
-		recipe.setRecipePicture("2.jpg");
-		recipe.setRecipeTagsList(Arrays.asList("#CoolChiken", "#Chiken"));
-		recipe.setRecipeType("chicken fryer");
-
-		return recipe;
-	}
-
 	public int getRecipeId() {
 		return recipeId;
 	}
@@ -122,8 +104,6 @@ public class Recipe {
 	public void setRecipeTagsList(List<String> recipeTagsList) {
 		this.recipeTagsList = recipeTagsList;
 	}
-	
-	
 
 	public UserRecipe getUserRecipe() {
 		return userRecipe;
