@@ -75,7 +75,7 @@ public class AuthencatedController {
 
 		for (MultipartFile f : files) {
 
-			System.out.println(f.getOriginalFilename());
+			//System.out.println(f.getOriginalFilename());
 
 			photoNames.append(f.getOriginalFilename() + ",");
 

@@ -35,9 +35,9 @@
 						</h5></td>
 					<td><a class="btn btn-primary" href="/auth/upload">Upload</a></td>
 				</tr>
-				<tr>
+				<%-- <tr>
 					<td>${userDetails.getUser()}</td>
-				</tr>
+				</tr> --%>
 			</table>
 			<div class="section-title mt-3">
 				<h2>Your Uploads</h2>

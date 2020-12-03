@@ -5,15 +5,15 @@
 			<h2>Latest recipes</h2>
 		</div>
 		<div class="row">
-		<c:forEach var="i" begin="0" end="5">
+			<c:forEach var="post" items="${latestPost}">
 				<div class="col-lg-4 col-md-6">
 					<div class="recipe">
 						<img
-							src="${pageContext.request.contextPath}/public/img/recipes/1.jpg"
+							src='${pageContext.request.contextPath}/uploads/${post.getRecipePicture().split(",")[0]}'
 							alt="">
 						<div class="recipe-info-warp">
 							<div class="recipe-info">
-								<a href="/c"><h3>Traditional Pizza</h3></a>
+								<a href="/c/${post.getRecipeId()}"><h3>${post.getRecipeName() }</h3></a>
 								<div class="rating">
 									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 				</div>
-				</c:forEach>
+			</c:forEach>
 		</div>
 	</div>
 </section>

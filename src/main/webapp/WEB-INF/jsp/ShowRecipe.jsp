@@ -88,8 +88,6 @@
 							</div>
 							<div class="blog-text">
 								<h5>${recipe.getRecipeType() }</h5>
-								<span>By <security:authentication
-										property="principal.username" /></span>
 								<p>${recipe.getRecipeDescription().getProcess()}</p>
 
 								<a href="#" class="comment">2 Comments</a>
