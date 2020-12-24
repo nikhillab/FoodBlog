@@ -2,17 +2,17 @@
 
 <body>
 	<%@include file="Navbar.jsp"%>
-	<main role="main" class="container mt-3" >
+	<main role="main" class="container mt-3">
 		<div class="section-title">
 			<h2>Upload Photos</h2>
 		</div>
 
-		<form:form action="/auth/fileupload" enctype="multipart/form-data" method="post">
+		<form:form action="/auth/fileupload" enctype="multipart/form-data"
+			method="post">
 			<div class="form-group row">
- 
+
 				<div class="col-sm-10">
-					<input type="file" name="files" multiple="multiple"
-						class=" mt-3">
+					<input type="file" name="files" multiple="multiple" class=" mt-3">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -24,4 +24,6 @@
 		</form:form>
 
 	</main>
+	<hr>
+	<jsp:include page="slider.jsp"></jsp:include>
 	<%@include file="Footer.jsp"%>

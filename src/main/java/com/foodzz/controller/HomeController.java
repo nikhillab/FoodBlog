@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.foodzz.entity.Recipe;
-import com.foodzz.service.LatestPostService;
 import com.foodzz.service.Offers;
+import com.foodzz.service.PostService;
 
 @Controller
 public class HomeController {
 	@Autowired
-	private LatestPostService latestPostService;
+	private PostService latestPostService;
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String home(@RequestParam(defaultValue = "Home") String title, Model model) {
@@ -38,4 +38,20 @@ public class HomeController {
 		return "redirect:/";
 	}
 
+	@RequestMapping(path = "/recipes", method = RequestMethod.GET)
+	public String getrecipes(@RequestParam String title, Model model) {
+		model.addAttribute("title", title);
+
+		Optional<List<Recipe>> allPosts = latestPostService.getAllPosts();
+		if (allPosts.isPresent()) {
+			model.addAttribute("allPosts", allPosts.get());
+		}
+		return "recipes";
+	}
+
+	@RequestMapping("/contact")
+	public String contact(Model model) {
+		model.addAttribute("title", "Contact");
+		return "contact";
+	}
 }

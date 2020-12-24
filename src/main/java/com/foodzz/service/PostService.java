@@ -10,7 +10,7 @@ import com.foodzz.entity.Recipe;
 import com.foodzz.repositories.RecipeRepo;
 
 @Service
-public class LatestPostService {
+public class PostService {
 
 	@Autowired
 	private RecipeRepo recipeRepo;
@@ -25,6 +25,11 @@ public class LatestPostService {
 			return Optional.empty();
 		}
 
+	}
+
+	public Optional<List<Recipe>> getAllPosts() {
+		List<Recipe> allRecipe = recipeRepo.findAll();
+		return Optional.of(allRecipe);
 	}
 
 }

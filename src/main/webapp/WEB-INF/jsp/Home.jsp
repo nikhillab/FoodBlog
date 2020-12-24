@@ -27,6 +27,9 @@
 			<!-- Include CatagryShow -->
 			<jsp:include page="CatogryShow.jsp"></jsp:include>
 		</div>
+		
 	</main>
+	<hr>
+	<jsp:include page="slider.jsp"></jsp:include>
 	<!--  Include  FOOTER hear  -->
 	<%@include file="Footer.jsp"%>

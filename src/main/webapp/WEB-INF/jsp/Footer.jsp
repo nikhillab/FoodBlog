@@ -21,9 +21,8 @@
 				<ul class="footer-menu">
 					<li><a href="/">Home</a></li>
 					<li><a href="#">Features</a></li>
-					<li><a href="#">Receipies</a></li>
-					<li><a href="#">Reviews</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="/recipes?title=Receipies">Receipies</a></li>
+					<li><a href="/contact">Contact</a></li>
 				</ul>
 				<p class="copyright">
 					Copyright &copy;

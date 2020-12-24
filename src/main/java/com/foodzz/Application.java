@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.foodzz.entity.Recipe;
+import com.foodzz.service.PostService;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -17,14 +18,17 @@ public class Application implements CommandLineRunner {
 		SpringApplication.run(Application.class, args);
 	}
 
+	@Autowired
+	PostService lat;
+
 	@Override
 	public void run(String... args) throws Exception {
-//		Optional<List<Recipe>> latestPost = lat.getLatestPost();
-//		if(latestPost.isPresent())
-//			System.out.println(latestPost.get().size());
-//		else
-//			System.out.println("no->>>>>>>>>>>>>>>>>");
-//	}
-
+		Optional<List<Recipe>> latestPost = lat.getLatestPost();
+		if(latestPost.isPresent())
+			System.out.println(latestPost.get().get(1).getUserRecipe());
+		else
+			System.out.println("no->>>>>>>>>>>>>>>>>");
 	}
+
+	
 }

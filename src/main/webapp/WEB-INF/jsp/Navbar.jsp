@@ -11,46 +11,37 @@
 		</a> <a class="navbar-brand" href="/?title=Foodzz">Foodzz</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item "><a class="nav-link" href="/?title=Home">HOME
+				<li class="nav-item "><a class="nav-link" href="/?title=Home">Home
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/?title=RECIPES">RECIPES
+				<li class="nav-item"><a class="nav-link" href="/recipes?title=Receipies">Receipies
 				</a></li>
 				<li class="nav-item"><a class="nav-link "
 					href="/?title=POPULAR">Festival Special</a></li>
-
+<li class="nav-item"><a class="nav-link "
+					href="/contact">Contact</a></li>
 
 			</ul>
 			<security:authorize access="isAuthenticated()">
 				<ul class="navbar-nav ">
-					<li class="nav-item"><a class="nav-link "
+					<li class="nav-item pr-4"><a class="nav-link "
 						href="/auth/user/<security:authentication property="principal.username" />
 									">Profile</a></li>
 
-					<li class="nav-item"><form:form
+					<li class="nav-item pr-4"><form:form
 							action="${pageContext.request.contextPath}/logout" method="POST"
 							class="nav-item">
-							<input type="submit" class="nav-link btn btn-dark" name="Logout"
+							<input type="submit" class=" btn btn-primary" name="Logout"
 								value="Logout" />
 						</form:form></li>
 				</ul>
 			</security:authorize>
 			<security:authorize access="!isAuthenticated()">
 				<ul class="navbar-nav ">
-					<li class="nav-item"><a class="nav-link " href="/userForm">Sign
+					<li class="nav-item pr-4"><a class="nav-link " href="/userForm">Sign
 							Up</a></li>
-					<li class="nav-item"><a class="nav-link " href="/login">Login</a></li>
+					<li class="nav-item pr-4"><a class="btn btn-success" href="/login">Login</a></li>
 				</ul>
 			</security:authorize>
-
-
-
-			<form class="form-inline mt-2 mt-md-0" action="/search" method="get">
-
-				<input class="form-control mr-sm-2" type="text"
-					placeholder="Search Recipes" aria-label="Search" name="item" />
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-					Search</button>
-			</form>
 
 		</div>
 	</nav>
